@@ -1,8 +1,3 @@
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
-
-import java.awt.*;
-import java.awt.geom.Line2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 
