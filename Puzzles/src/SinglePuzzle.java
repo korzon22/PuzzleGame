@@ -4,21 +4,20 @@ import java.awt.geom.*;
 public class SinglePuzzle extends Area {
 
     Area area = new Area();
-    double positionX = 0;
-    double positionY = 0;
-    double originX = 0;
-    double originY = 0;
+    double cornerX = 0;
+    double cornerY = 0;
+    double originalX = 0;
+    double originalY = 0;
 
-    SinglePuzzle(double a, double b, double c, double d){
+    SinglePuzzle(double cornerX, double cornerY, double width, double height){
 
-        positionX = a;
-        positionY = b;
+        this.cornerX = cornerX;
+        this.cornerY = cornerY;
 
-        originX = a;
-        originY = b;
+        this.originalX = cornerX;
+        this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(positionX, positionY, c, d);
-
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
         area.add(new Area(rectangle));
 
 //        shape.subtract(new Area(new Rectangle(1, 1, 1, 1)));
@@ -26,24 +25,31 @@ public class SinglePuzzle extends Area {
 //        shape.exclusiveOr(new Area(new Rectangle(1, 1, 1, 1)));
 
     }
+
+    SinglePuzzle(double cornerX, double cornerY, double width, double height, String str){
+        this(cornerX,cornerY,width,height);
+
+
+    }
+
     Area getPuzzle (){
         return area;
     }
     void setPosition(double newX, double newY){
-        this.positionX = newX;
-        this.positionY = newY;
+        this.cornerX = newX;
+        this.cornerY = newY;
 
         AffineTransform at = new AffineTransform();
         at.translate(newX,newY);
         area.transform(at);
 
-        originX=originX+newX;
-        originY=originY+newY;
+        originalX = originalX +newX;
+        originalY = originalY +newY;
     }
 
     AffineTransform getOATransform(){
         AffineTransform oAT = new AffineTransform();
-        oAT.translate(originX,originY);
+        oAT.translate(originalX, originalY);
         return oAT;
     }
 
