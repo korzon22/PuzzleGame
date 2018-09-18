@@ -16,6 +16,7 @@ public class Board  extends Area {
         yEnd = yE;
         noOfRowsColumns = nR;
         puzzleSize = 100;
+        String s = "aaa";
     }
 
     void createPuzzles(){

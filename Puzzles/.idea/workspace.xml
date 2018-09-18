@@ -1,67 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fc1354a-8ac6-4aea-a673-52cef48aea51" name="Default" comment="">
+    <list default="true" id="0fc1354a-8ac6-4aea-a673-52cef48aea51" name="Default" comment="Checking from Intelij">
+      <change afterPath="$PROJECT_DIR$/src/SomeTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Puzzles/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseMotionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseMotionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/FrameToDraw.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/FrameToDraw.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/PuzzleGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/PuzzleGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/SinglePuzzle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/SinglePuzzle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/AboutDialog$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/AboutDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ButtonPanel$ColorAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ButtonPanel$StartAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ButtonPanel$StopAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ButtonPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/CamelCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ComponentToDraw$MouseHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ComponentToDraw$MouseMotionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ComponentToDraw.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/DrawComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/DrawingFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/FrameToDraw.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/ImageComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/LightEffectPanel3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/LightEffectTest3$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/LightEffectTest3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Menu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Menu$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/MouseComponent$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/MouseComponent$MouseHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/MouseComponent$MouseMotionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/MouseComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/PuzzleGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/SingleImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/SinglePuzzle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Solution9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/StockMaximize.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/TestClippedPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/TestClippedPanel$ClippedPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/TestClippedPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/TextPanel$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/TextPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/Time.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/WorkingWithCollections.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/WorkingWithFrames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/com/zetcode/ClippingShapesEx$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/com/zetcode/ClippingShapesEx.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/com/zetcode/Surface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/timer/TimePrinter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Solutions/timer/TimerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SinglePuzzle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SinglePuzzle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,16 +23,32 @@
       <file leaf-file-name="PuzzleGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PuzzleGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
+            <state relative-caret-position="646">
+              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="459">
+              <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SomeTests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SomeTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="107" column="57" lean-forward="true" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,8 +59,8 @@
       <file leaf-file-name="SinglePuzzle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SinglePuzzle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+            <state relative-caret-position="748">
+              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -161,16 +121,17 @@
         <option value="$PROJECT_DIR$/src/SingleImage.java" />
         <option value="$PROJECT_DIR$/src/Time.java" />
         <option value="$PROJECT_DIR$/src/PuzzleGame.java" />
-        <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/SinglePuzzle.java" />
+        <option value="$PROJECT_DIR$/src/Board.java" />
+        <option value="$PROJECT_DIR$/src/SomeTests.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="864" />
-    <option name="y" value="105" />
-    <option name="width" value="1935" />
-    <option name="height" value="1044" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1224" />
+    <option name="height" value="834" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -179,8 +140,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,6 +156,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,11 +184,6 @@
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
-    <configuration name="ClipTilesTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ClipTilesTest" />
-      <module name="Puzzles" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
     <configuration name="ClippingShapesEx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.zetcode.ClippingShapesEx" />
       <module name="Puzzles" />
@@ -241,6 +197,11 @@
     </configuration>
     <configuration name="PuzzleGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PuzzleGame" />
+      <module name="Puzzles" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="SomeTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SomeTests" />
       <module name="Puzzles" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -324,18 +285,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.WorkingWithFrames" />
-      <item itemvalue="Application.ClipTilesTest" />
       <item itemvalue="Application.TestClippedPanel" />
       <item itemvalue="Application.ClippingShapesEx" />
       <item itemvalue="Application.PuzzleGame" />
+      <item itemvalue="Application.SomeTests" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PuzzleGame" />
+        <item itemvalue="Application.SomeTests" />
         <item itemvalue="Application.TestClippedPanel" />
         <item itemvalue="Application.ClippingShapesEx" />
         <item itemvalue="Application.WorkingWithFrames" />
-        <item itemvalue="Application.ClipTilesTest" />
       </list>
     </recent_temporary>
   </component>
@@ -350,19 +311,29 @@
       <option name="presentableId" value="Default" />
       <updated>1503296650279</updated>
     </task>
+    <task id="LOCAL-00001" summary="Checking from Intelij">
+      <created>1527327090209</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1527327090209</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.4730679" weight="0.1323024" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5526932" side_tool="true" visible="true" weight="0.2371134" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5581577" side_tool="true" visible="true" weight="0.2371134" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.44730678" weight="0.2371134" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.44184232" visible="true" weight="0.2371134" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="2" />
@@ -374,16 +345,15 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.490242" weight="0.13573883" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="right" id="Properties" order="6" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Nl-Palette" order="5" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32914287" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Properties" order="6" />
+      <window_info id="Nl-Palette" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4980484" weight="0.3298969" />
-      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.4746292" weight="0.1323024" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -393,6 +363,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="Checking from Intelij" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking from Intelij" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -404,8 +376,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CamelCase.java" />
-    <entry file="file://$PROJECT_DIR$/src/WorkingWithFrames.java" />
+    <entry file="file://$PROJECT_DIR$/src/SingleImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/WorkingWithCollections.java" />
     <entry file="file://$PROJECT_DIR$/src/Solution9.java" />
     <entry file="file://$PROJECT_DIR$/src/WorkingWithFrames.java" />
@@ -499,8 +479,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SinglePuzzle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        <state relative-caret-position="748">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -509,14 +499,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PuzzleGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        <state relative-caret-position="646">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/SomeTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="158">
+          <caret line="107" column="57" lean-forward="true" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
