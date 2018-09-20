@@ -72,7 +72,7 @@ class ComponentToDraw extends JComponent{
 
         board.createPuzzles();
         board.createImages();
-        board.makeMess();
+//        board.makeMess();
         addMouseMotionListener(new MouseMotionHandler());
         addMouseListener(new MouseHandler());
     }
@@ -91,6 +91,7 @@ class ComponentToDraw extends JComponent{
             g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
 //            g2.setStroke(new BasicStroke(3));
 
+
         }
 
         revalidate();
@@ -104,26 +105,42 @@ class ComponentToDraw extends JComponent{
             cP = getCurrentPuzzle(e);
             if (cP !=-1){
                 display_info = ""+cP;
+
                 startingX = e.getX();
                 startingY = e.getY();
+
+                board.listOfPuzzles.add(board.listOfPuzzles.remove(cP));
+                board.listOfImages.add(board.listOfImages.remove(cP));
+
             }
         }
-        public void mouseClicked(MouseEvent e){
-            if(e.getClickCount() == 2)
-            {				// write here your event handling code
-                System.out.println("You clicked two times on the button");
+
+        public void mouseClicked(MouseEvent e) {
+
+            cP = getCurrentPuzzle(e);
+            if (cP !=-1){
+
+                int i = getCurrentPuzzle(e);
+
+                repaint();
+                revalidate();
             }
+
         }
+
         public void mouseReleased(MouseEvent e) {
         }
     }
     class MouseMotionHandler implements MouseMotionListener {
 
         public void mouseMoved(MouseEvent e){
+            repaint();
+            revalidate();
         }
         public void mouseDragged(MouseEvent e){
             if (cP !=-1) {
-                board.listOfPuzzles.get(cP).setPosition(e.getX() - startingX, e.getY() - startingY);
+                int size = board.listOfPuzzles.size();
+                board.listOfPuzzles.get(size-1).setPosition(e.getX() - startingX, e.getY() - startingY);
                 startingX = e.getX();
                 startingY = e.getY();
                 repaint();

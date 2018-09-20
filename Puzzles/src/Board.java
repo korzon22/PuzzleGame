@@ -6,8 +6,8 @@ public class Board  extends Area {
     double xEnd,yEnd;
     int noOfRowsColumns;
     double puzzleSize;
-    ArrayList<SinglePuzzle> listOfPuzzles = new ArrayList<SinglePuzzle>();
-    ArrayList<SingleImage> listOfImages = new ArrayList<>();
+    public ArrayList<SinglePuzzle> listOfPuzzles = new ArrayList<SinglePuzzle>();
+    public ArrayList<SingleImage> listOfImages = new ArrayList<>();
 
     Board(int xS, int yS, int xE, int yE, int nR){
         xStart = xS;

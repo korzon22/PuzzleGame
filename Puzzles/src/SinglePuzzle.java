@@ -28,28 +28,31 @@ public class SinglePuzzle extends Area {
         Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
         area.add(new Area(rectangle));
 
-//        shape.subtract(new Area(new Rectangle(1, 1, 1, 1)));
-//        shape.intersect(new Area(new Rectangle(1, 1, 1, 1)));
-//        shape.exclusiveOr(new Area(new Rectangle(1, 1, 1, 1)));
 
     }
 
-    SinglePuzzle(double cornerX, double cornerY, double width, double height, String str){
-        this(cornerX,cornerY,width,height);
+    void setRotation(double newX, double newY){
+        this.cornerX = newX;
+        this.cornerY = newY;
 
+        AffineTransform oAT = new AffineTransform();
+       oAT.quadrantRotate(1,newX, newY);
+        area.transform(oAT);
 
     }
 
     Area getPuzzle (){
         return area;
     }
+
     void setPosition(double newX, double newY){
+
         this.cornerX = newX;
         this.cornerY = newY;
 
-        AffineTransform at = new AffineTransform();
-        at.translate(newX,newY);
-        area.transform(at);
+        AffineTransform oAT = new AffineTransform();
+        oAT.translate(newX,newY);
+        area.transform(oAT);
 
         originalX = originalX +newX;
         originalY = originalY +newY;
@@ -69,16 +72,15 @@ public class SinglePuzzle extends Area {
 class PuzzleTopLeftCorner extends SinglePuzzle {
 
     PuzzleTopLeftCorner(double cornerX, double cornerY, double width, double height){
+
         this.cornerX = cornerX;
         this.cornerY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
-
         Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
         Ellipse2D.Double rCut = new Ellipse2D.Double((width-cornerX)/2-20+40,(height-cornerY)/2-20,40,40);
         area.add(new Area(rectangle));
-//        area.add(new Area(rCut));
 
         area.subtract(new Area(rCut));
 
@@ -207,6 +209,7 @@ class PuzzleLeftEven extends SinglePuzzle {
 
     PuzzleLeftEven(double cornerX, double cornerY, double width, double height){
 
+
         this.cornerX = cornerX;
         this.cornerY = cornerY;
 
@@ -260,6 +263,7 @@ class PuzzleRightEven extends SinglePuzzle {
 
     PuzzleRightEven(double cornerX, double cornerY, double width, double height){
 
+
         this.cornerX = cornerX;
         this.cornerY = cornerY;
 
@@ -290,6 +294,7 @@ class PuzzleRightOdd extends SinglePuzzle {
 
     PuzzleRightOdd(double cornerX, double cornerY, double width, double height){
 
+
         this.cornerX = cornerX;
         this.cornerY = cornerY;
 
@@ -312,6 +317,7 @@ class PuzzleRightOdd extends SinglePuzzle {
 class PuzzleBottomRowEven extends SinglePuzzle {
 
     PuzzleBottomRowEven(double cornerX, double cornerY, double width, double height){
+
         this.cornerX = cornerX;
         this.cornerY = cornerY;
 
@@ -364,6 +370,7 @@ class PuzzleBottomRowOdd extends SinglePuzzle {
 class PuzzleEvenEven extends SinglePuzzle {
 
     PuzzleEvenEven(double cornerX, double cornerY, double width, double height){
+
         this.cornerX = cornerX;
         this.cornerY = cornerY;
 
