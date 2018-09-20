@@ -8,19 +8,18 @@ import java.io.IOException;
 
 public class SingleImage extends Image {
     int xStart, yStart;
-    double xEnd,yEnd;
-    int noOfRowsColumns;
-    double imageSize;
     String f = "D:\\puzzle_Valparaiso.jpg";
 
     BufferedImage bfdImage = null;
     BufferedImage subimage = null;
 
-    SingleImage(int xS, int yS, int xE, int yE){
+    SingleImage(){
+
+    }
+
+    SingleImage(int xS, int yS){
         xStart = xS;
         yStart = yS;
-        xEnd = xE;
-        yEnd = yE;
         File imageFile = new File(f);
         try {
             bfdImage = ImageIO.read(imageFile);
@@ -58,5 +57,90 @@ public class SingleImage extends Image {
         return null;
     }
 
+
+}
+
+class SingleImageTopExtended extends SingleImage {
+
+    SingleImageTopExtended(int xS, int yS){
+        xStart = xS;
+        yStart = yS;
+        File imageFile = new File(f);
+        try {
+            bfdImage = ImageIO.read(imageFile);
+            subimage = bfdImage.getSubimage(xStart, yStart, 200, 200);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+class SingleImageLeftExtended extends SingleImage {
+
+    SingleImageLeftExtended(int xS, int yS){
+        xStart = xS;
+        yStart = yS;
+        File imageFile = new File(f);
+        try {
+            bfdImage = ImageIO.read(imageFile);
+            subimage = bfdImage.getSubimage(xStart, yStart, 200, 200);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+class SingleImageRightExtended extends SingleImage {
+
+    SingleImageRightExtended(int xS, int yS){
+        xStart = xS;
+        yStart = yS;
+        File imageFile = new File(f);
+        try {
+            bfdImage = ImageIO.read(imageFile);
+            subimage = bfdImage.getSubimage(xStart, yStart, 200, 200);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+class SingleImageBottomExtended extends SingleImage {
+
+    SingleImageBottomExtended(int xS, int yS){
+        xStart = xS;
+        yStart = yS;
+        File imageFile = new File(f);
+        try {
+            bfdImage = ImageIO.read(imageFile);
+            subimage = bfdImage.getSubimage(xStart, yStart, 200, 200);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+class SingleImageExtended extends SingleImage {
+
+    SingleImageExtended(int xS, int yS){
+        xStart = xS;
+        yStart = yS;
+        File imageFile = new File(f);
+        try {
+            bfdImage = ImageIO.read(imageFile);
+            subimage = bfdImage.getSubimage(xStart, yStart, 200, 200);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

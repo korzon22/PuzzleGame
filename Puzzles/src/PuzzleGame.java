@@ -72,6 +72,7 @@ class ComponentToDraw extends JComponent{
 
         board.createPuzzles();
         board.createImages();
+        board.makeMess();
         addMouseMotionListener(new MouseMotionHandler());
         addMouseListener(new MouseHandler());
     }
@@ -81,14 +82,16 @@ class ComponentToDraw extends JComponent{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g.create();
 
-        for (int i=0; i<board.listOfPuzzles.size(); i++){
-            g2.setStroke(new BasicStroke(6));
-            g2.draw(board.listOfPuzzles.get(i).getPuzzle());
-            g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
-        }
+        g2.drawString(display_info, 640,440);
+        g2.drawString(display_current_puzzle, 640,460);
 
-        g2.drawString(display_info, 540,440);
-        g2.drawString(display_current_puzzle, 540,460);
+        for (int i=0; i<board.listOfPuzzles.size(); i++){
+            g2.draw(board.listOfPuzzles.get(i).getPuzzle());
+            g2.setClip(board.listOfPuzzles.get(i).getPuzzle());
+            g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
+//            g2.setStroke(new BasicStroke(3));
+
+        }
 
         revalidate();
         repaint();
@@ -106,6 +109,10 @@ class ComponentToDraw extends JComponent{
             }
         }
         public void mouseClicked(MouseEvent e){
+            if(e.getClickCount() == 2)
+            {				// write here your event handling code
+                System.out.println("You clicked two times on the button");
+            }
         }
         public void mouseReleased(MouseEvent e) {
         }

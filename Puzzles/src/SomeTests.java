@@ -29,7 +29,7 @@ public class SomeTests {
 
         if (map.containsKey("a")) map.put("b", map.get("a"));
 
-        if (map.containsKey("c")) map.remove("c");
+        map.remove("c");
         return map;
     }
 
@@ -73,8 +73,7 @@ public class SomeTests {
     }
 
     public boolean startHi(String str) {
-        if (str.substring(0,2).equals("hi")) return true;
-        return false;
+        return str.substring(0, 2).equals("hi");
     }
 
     public String middleThree(String str) {
@@ -111,6 +110,35 @@ public class SomeTests {
         for(int i=0; i<strings.length; i++){
             map.put(strings[i],0);
         }
+        return map;
+    }
+
+    public Map<String, Boolean> wordMultiple(String[] strings) {
+
+        Map<String, Boolean> map = new HashMap<>();
+
+        Map<String, Integer> map2 = new HashMap<>();
+
+        for(int i=0; i<strings.length; i++){
+            map2.put(strings[i],0);
+        }
+        for(int i=0; i<strings.length; i++){
+            if (map2.containsKey(strings[i])) {
+                int currentCount = map2.get(strings[i]);
+                map2.put(strings[i],currentCount+1);}
+            map.put(strings[i], false);
+        }
+
+        Iterator it = map2.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            if ((int)pair.getValue() > 1) {
+                map.put(pair.getKey().toString(), true);
+            }
+
+        }
+
         return map;
     }
 }
