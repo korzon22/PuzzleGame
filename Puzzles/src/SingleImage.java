@@ -1,5 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
@@ -18,12 +20,12 @@ public class SingleImage extends Image {
     }
 
     SingleImage(int xS, int yS){
-        xStart = xS;
-        yStart = yS;
+        this.xStart = xS;
+        this.yStart = yS;
         File imageFile = new File(f);
         try {
-            bfdImage = ImageIO.read(imageFile);
-            subimage = bfdImage.getSubimage(xStart, yStart, 100, 100);
+            this.bfdImage = ImageIO.read(imageFile);
+            this.subimage = bfdImage.getSubimage(xStart, yStart, 100, 100);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,7 +59,15 @@ public class SingleImage extends Image {
         return null;
     }
 
+    void rotateImage(){
+        AffineTransform tx = new AffineTransform();
 
+        tx.quadrantRotate(1,100,100);
+
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BICUBIC);
+        this.subimage = op.filter(this.subimage, null);
+
+    }
 }
 
 class SingleImageTopExtended extends SingleImage {

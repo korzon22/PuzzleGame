@@ -32,37 +32,38 @@ public class Board  extends Area {
 //        xStart = 0;
 //        yStart = 0;
 
-        listOfPuzzles.add(new PuzzleTopLeftCorner(0, 0, 100, 100));
-        listOfPuzzles.add(new PuzzleTopRowEven(100, 000, 100, 100));
-        listOfPuzzles.add(new PuzzleTopRowOdd(200, 000, 100, 100));
-        listOfPuzzles.add(new PuzzleTopRowEven(300, 000, 100, 100));
-        listOfPuzzles.add(new PuzzleTopRightCorner(400, 000, 100, 100));
+        //puzzles - ORIGINAL-need to shift all
+        listOfPuzzles.add(new PuzzleTopLeftCorner(100, 100, 100, 100));
+        listOfPuzzles.add(new PuzzleTopRowEven(200, 100, 100, 100));
+        listOfPuzzles.add(new PuzzleTopRowOdd(300, 100, 100, 100));
+        listOfPuzzles.add(new PuzzleTopRowEven(400, 100, 100, 100));
+        listOfPuzzles.add(new PuzzleTopRightCorner(500, 100, 100, 100));
 
-        listOfPuzzles.add(new PuzzleLeftEven(0, 100, 100, 100));
-        listOfPuzzles.add(new PuzzleLeftOdd(0, 200, 100, 100));
-        listOfPuzzles.add(new PuzzleLeftEven(0, 300, 100, 100));
+        listOfPuzzles.add(new PuzzleLeftEven(100, 200, 100, 100));
+        listOfPuzzles.add(new PuzzleLeftOdd(100, 300, 100, 100));
+        listOfPuzzles.add(new PuzzleLeftEven(100, 400, 100, 100));
 
-        listOfPuzzles.add(new PuzzleRightEven(400, 100, 100, 100));
-        listOfPuzzles.add(new PuzzleRightOdd(400, 200, 100, 100));
-        listOfPuzzles.add(new PuzzleRightEven(400, 300, 100, 100));
-
-        listOfPuzzles.add(new PuzzleEvenEven(100, 100, 100, 100));
-        listOfPuzzles.add(new PuzzleEvenEven(300, 100, 100, 100));
-        listOfPuzzles.add(new PuzzleEvenEven(100, 300, 100, 100));
-        listOfPuzzles.add(new PuzzleEvenEven(300, 300, 100, 100));
-
-        listOfPuzzles.add(new PuzzleOddEven(200, 100, 100, 100));
-        listOfPuzzles.add(new PuzzleOddEven(100, 200, 100, 100));
-        listOfPuzzles.add(new PuzzleOddEven(300, 200, 100, 100));
-        listOfPuzzles.add(new PuzzleOddEven(200, 300, 100, 100));
+        listOfPuzzles.add(new PuzzleRightEven(500, 200, 100, 100));
+        listOfPuzzles.add(new PuzzleRightOdd(500, 300, 100, 100));
+        listOfPuzzles.add(new PuzzleRightEven(500, 400, 100, 100));
 
         listOfPuzzles.add(new PuzzleEvenEven(200, 200, 100, 100));
+        listOfPuzzles.add(new PuzzleEvenEven(400, 200, 100, 100));
+        listOfPuzzles.add(new PuzzleEvenEven(200, 400, 100, 100));
+        listOfPuzzles.add(new PuzzleEvenEven(400, 400, 100, 100));
 
-        listOfPuzzles.add(new PuzzleBottomLeftCorner(0, 400, 100, 100));
-        listOfPuzzles.add(new PuzzleBottomRowEven(100, 400, 100, 100));
-        listOfPuzzles.add(new PuzzleBottomRowOdd(200, 400, 100, 100));
-        listOfPuzzles.add(new PuzzleBottomRowEven(300, 400, 100, 100));
-        listOfPuzzles.add(new PuzzleBottomRightCorner(400, 400, 100, 100));
+        listOfPuzzles.add(new PuzzleOddEven(300, 200, 100, 100));
+        listOfPuzzles.add(new PuzzleOddEven(200, 300, 100, 100));
+        listOfPuzzles.add(new PuzzleOddEven(400, 300, 100, 100));
+        listOfPuzzles.add(new PuzzleOddEven(300, 400, 100, 100));
+
+        listOfPuzzles.add(new PuzzleEvenEven(300, 300, 100, 100));
+
+        listOfPuzzles.add(new PuzzleBottomLeftCorner(100, 500, 100, 100));
+        listOfPuzzles.add(new PuzzleBottomRowEven(200, 500, 100, 100));
+        listOfPuzzles.add(new PuzzleBottomRowOdd(300, 500, 100, 100));
+        listOfPuzzles.add(new PuzzleBottomRowEven(400, 500, 100, 100));
+        listOfPuzzles.add(new PuzzleBottomRightCorner(500, 500, 100, 100));
 
 
     }
@@ -79,38 +80,40 @@ public class Board  extends Area {
 //        }
 //        xStart = 0;
 //        yStart = 0;
-        listOfImages.add(new SingleImage(0, 0));
-        listOfImages.add(new SingleImageTopExtended(50,0));
-        listOfImages.add(new SingleImage(200, 0));
-        listOfImages.add(new SingleImageTopExtended(250,0));
-        listOfImages.add(new SingleImage(400, 0));
 
-        listOfImages.add(new SingleImageLeftExtended(0,50));
-        listOfImages.add(new SingleImage(0, 200));
-        listOfImages.add(new SingleImageLeftExtended(0,250));
-
-        listOfImages.add(new SingleImageRightExtended(350,50));
-        listOfImages.add(new SingleImage(400, 200));
-        listOfImages.add(new SingleImageRightExtended(350,250));
-
-        listOfImages.add(new SingleImage(100, 100));
-        listOfImages.add(new SingleImage(300, 100));
-        listOfImages.add(new SingleImage(100, 300));
-        listOfImages.add(new SingleImage(300, 300));
-
+        listOfImages.add(new SingleImageExtended(50, 50));
         listOfImages.add(new SingleImageExtended(150, 50));
+        listOfImages.add(new SingleImageExtended(250, 50));
+        listOfImages.add(new SingleImageExtended(350, 50));
+        listOfImages.add(new SingleImageExtended(450, 50));
+
         listOfImages.add(new SingleImageExtended(50, 150));
+        listOfImages.add(new SingleImageExtended(50, 250));
+        listOfImages.add(new SingleImageExtended(50, 350));
+
+        listOfImages.add(new SingleImageExtended(450, 150));
+        listOfImages.add(new SingleImageExtended(450, 250));
+        listOfImages.add(new SingleImageExtended(450, 350));
+
+        listOfImages.add(new SingleImageExtended(150, 150));
+        listOfImages.add(new SingleImageExtended(350, 150));
+        listOfImages.add(new SingleImageExtended(150, 350));
+        listOfImages.add(new SingleImageExtended(350, 350));
+
+
+
         listOfImages.add(new SingleImageExtended(250, 150));
         listOfImages.add(new SingleImageExtended(150, 250));
+        listOfImages.add(new SingleImageExtended(350, 250));
+        listOfImages.add(new SingleImageExtended(250, 350));
 
-        listOfImages.add(new SingleImage(200, 200));
+        listOfImages.add(new SingleImageExtended(250, 250));
 
-        listOfImages.add(new SingleImage(0, 400));
-        listOfImages.add(new SingleImageBottomExtended(50,350));
-        listOfImages.add(new SingleImage(200, 400));
-        listOfImages.add(new SingleImageBottomExtended(250,350));
-        listOfImages.add(new SingleImage(400, 400));
-
+        listOfImages.add(new SingleImageExtended(50, 450));
+        listOfImages.add(new SingleImageExtended(150, 450));
+        listOfImages.add(new SingleImageExtended(250, 450));
+        listOfImages.add(new SingleImageExtended(350, 450));
+        listOfImages.add(new SingleImageExtended(450, 450));
 
     }
 

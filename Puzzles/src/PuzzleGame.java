@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 
 public class PuzzleGame {
     public static void main(String[] args) {
@@ -88,6 +89,7 @@ class ComponentToDraw extends JComponent{
         for (int i=0; i<board.listOfPuzzles.size(); i++){
             g2.draw(board.listOfPuzzles.get(i).getPuzzle());
             g2.setClip(board.listOfPuzzles.get(i).getPuzzle());
+
             g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
 //            g2.setStroke(new BasicStroke(3));
 
@@ -100,32 +102,56 @@ class ComponentToDraw extends JComponent{
     }
     class MouseHandler extends MouseAdapter {
 
-        public void mousePressed(MouseEvent e){
+        public void mousePressed(MouseEvent e) {
 
-            cP = getCurrentPuzzle(e);
-            if (cP !=-1){
-                display_info = ""+cP;
+            if (e.getButton() == MouseEvent.BUTTON1) {
+                cP = getCurrentPuzzle(e);
+                if (cP != -1) {
 
-                startingX = e.getX();
-                startingY = e.getY();
+                    startingX = e.getX();
+                    startingY = e.getY();
 
-                board.listOfPuzzles.add(board.listOfPuzzles.remove(cP));
-                board.listOfImages.add(board.listOfImages.remove(cP));
+                    board.listOfPuzzles.add(board.listOfPuzzles.remove(cP));
+                    board.listOfImages.add(board.listOfImages.remove(cP));
 
+                    display_info = "" + cP;
+                }
             }
         }
 
         public void mouseClicked(MouseEvent e) {
 
-            cP = getCurrentPuzzle(e);
-            if (cP !=-1){
+            if (e.getButton() == MouseEvent.BUTTON1) {
+                cP = getCurrentPuzzle(e);
+                if (cP != -1) {
 
-                int i = getCurrentPuzzle(e);
+                    int i = getCurrentPuzzle(e);
 
-                repaint();
-                revalidate();
+                    repaint();
+                    revalidate();
+                }
             }
 
+            if (e.getButton() == MouseEvent.BUTTON3) {
+                cP = getCurrentPuzzle(e);
+                if (cP != -1) {
+
+                    startingX = e.getX();
+                    startingY = e.getY();
+
+                    board.listOfPuzzles.add(board.listOfPuzzles.remove(cP));
+                    board.listOfImages.add(board.listOfImages.remove(cP));
+
+                    double x = board.listOfPuzzles.get(24).originalX;
+                    double y = board.listOfPuzzles.get(24).originalY;
+
+                    board.listOfPuzzles.get(24).setRotation(x+50,y+50);
+                    board.listOfImages.get(24).rotateImage();
+                    display_info = "" + cP;
+                    repaint();
+                    revalidate();
+                }
+            }
         }
 
         public void mouseReleased(MouseEvent e) {
@@ -133,18 +159,20 @@ class ComponentToDraw extends JComponent{
     }
     class MouseMotionHandler implements MouseMotionListener {
 
-        public void mouseMoved(MouseEvent e){
+        public void mouseMoved(MouseEvent e) {
             repaint();
             revalidate();
         }
-        public void mouseDragged(MouseEvent e){
-            if (cP !=-1) {
+
+        public void mouseDragged(MouseEvent e) {
+            if (cP != -1) {
                 int size = board.listOfPuzzles.size();
-                board.listOfPuzzles.get(size-1).setPosition(e.getX() - startingX, e.getY() - startingY);
+                board.listOfPuzzles.get(size - 1).setPosition(e.getX() - startingX, e.getY() - startingY);
                 startingX = e.getX();
                 startingY = e.getY();
                 repaint();
                 revalidate();
+//
             }
         }
     }
