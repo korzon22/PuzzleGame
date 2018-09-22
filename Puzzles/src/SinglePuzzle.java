@@ -30,12 +30,12 @@ public class SinglePuzzle extends Area {
 
     }
 
-    void setRotation(double newX, double newY) {
+    void setPuzzleRotation(double newX, double newY, int rotation) {
         this.cornerX = newX;
         this.cornerY = newY;
 
         AffineTransform oAT = new AffineTransform();
-        oAT.quadrantRotate(1, newX, newY);
+        oAT.quadrantRotate(rotation, newX, newY);
         area.transform(oAT);
     }
 

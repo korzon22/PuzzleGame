@@ -59,10 +59,10 @@ public class SingleImage extends Image {
         return null;
     }
 
-    void rotateImage(){
+    void setImageRotation(int rotation){
         AffineTransform tx = new AffineTransform();
 
-        tx.quadrantRotate(1,100,100);
+        tx.quadrantRotate(rotation,100,100);
 
         AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BICUBIC);
         this.subimage = op.filter(this.subimage, null);

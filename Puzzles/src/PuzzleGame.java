@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.geom.AffineTransform;
 
 public class PuzzleGame {
     public static void main(String[] args) {
@@ -33,7 +32,7 @@ class FrameToDraw extends JFrame {
 
         setSize(1000, 600);
 
-        setLocation(screenWidth/4, screenHeight/4);
+        setLocation(200, 200);
         setTitle("PUZZLE by KorzoN");
         setResizable(true);
 
@@ -73,7 +72,7 @@ class ComponentToDraw extends JComponent{
 
         board.createPuzzles();
         board.createImages();
-//        board.makeMess();
+        board.makeMess();
         addMouseMotionListener(new MouseMotionHandler());
         addMouseListener(new MouseHandler());
     }
@@ -87,12 +86,15 @@ class ComponentToDraw extends JComponent{
         g2.drawString(display_current_puzzle, 640,460);
 
         for (int i=0; i<board.listOfPuzzles.size(); i++){
-            g2.draw(board.listOfPuzzles.get(i).getPuzzle());
+//            g2.setStroke(new BasicStroke(3));
+//            g2.draw(board.listOfPuzzles.get(i).getPuzzle());
+            g2.setStroke(new BasicStroke(0));
             g2.setClip(board.listOfPuzzles.get(i).getPuzzle());
 
             g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
-//            g2.setStroke(new BasicStroke(3));
 
+            g2.setStroke(new BasicStroke(6));
+            g2.draw(board.listOfPuzzles.get(i).getPuzzle());
 
         }
 
@@ -145,8 +147,8 @@ class ComponentToDraw extends JComponent{
                     double x = board.listOfPuzzles.get(24).originalX;
                     double y = board.listOfPuzzles.get(24).originalY;
 
-                    board.listOfPuzzles.get(24).setRotation(x+50,y+50);
-                    board.listOfImages.get(24).rotateImage();
+                    board.listOfPuzzles.get(24).setPuzzleRotation(x+50,y+50,1);
+                    board.listOfImages.get(24).setImageRotation(1);
                     display_info = "" + cP;
                     repaint();
                     revalidate();

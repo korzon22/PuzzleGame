@@ -119,7 +119,18 @@ public class Board  extends Area {
 
     void makeMess(){
         for (int i=0; i< listOfPuzzles.size();i++){
-            listOfPuzzles.get(i).setPosition(Math.random()*500,Math.random()*500);
+            double xR = (Math.random()*300)+100;
+            double yR = (Math.random()*200)+100;
+            int rRotation = (int)((Math.random() * 4) + 1);
+
+            listOfPuzzles.get(i).setPosition(xR,yR);
+
+            double x = listOfPuzzles.get(i).originalX;
+            double y = listOfPuzzles.get(i).originalY;
+
+            listOfPuzzles.get(i).setPuzzleRotation(x+50,y+50,rRotation);
+            listOfImages.get(i).setImageRotation(rRotation);
         }
+
     }
 }
