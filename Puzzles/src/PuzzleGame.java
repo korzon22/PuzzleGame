@@ -1,31 +1,82 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 
 public class PuzzleGame {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
 
-            String f = "D:\\puzzle_Valparaiso.jpg";
-//            FrameWithPuzzles frameWP = new FrameWithPuzzles(f);
-////            frameWP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-////            frameWP.setVisible(true);
-
-            FrameWithThemeChooser frameWTC = new FrameWithThemeChooser();
-            frameWTC.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-            frameWTC.setVisible(true);
+            FrameWithPuzzles frameWP = new FrameWithPuzzles();
+            frameWP.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameWP.setVisible(true);
 
         });
     }
 }
 
-class FrameWithThemeChooser extends JFrame {
-    JPanel buttonPanel;
+class FrameWithPuzzles extends JFrame {
 
-    FrameWithThemeChooser() {
-        buttonPanel = new JPanel(new GridLayout(6, 3, 3   , 3));
+    private static final int DEFAULT_WIDTH = 400;
+    private static final int DEFAULT_HEIGHT = 400;
+
+    JPanel jP;
+    JMenuBar menuBar;
+    ComponentToDraw ctd;
+
+
+    public FrameWithPuzzles() {
+
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int sW = screenSize.width;
+        int sH = screenSize.height;
+
+        setSize(sW - 450, sH - 300);
+        setLocation(100, 100);
+        setTitle("PUZZLE game by KorzoN");
+        setResizable(true);
+
+        menuBar = new JMenuBar();
+        JMenu menu = new JMenu("MENU");
+        menuBar.add(menu);
+
+        JMenuItem menuItemNewGame = new JMenuItem("Select new theme");
+        JMenuItem menuItemQuit = new JMenuItem("Quit game");
+
+        menuItemNewGame.addActionListener(e -> {
+
+            getContentPane().removeAll();
+            repaint();
+            revalidate();
+
+            setLayout(new BorderLayout());
+            this.add(createJPanel());
+
+            repaint();
+            revalidate();
+
+        });
+
+        menuItemQuit.addActionListener(e -> System.exit(0));
+
+        menu.add(menuItemNewGame);
+        menu.add(menuItemQuit);
+
+        this.setJMenuBar(menuBar);
+
+        repaint();
+        revalidate();
+
+    }
+
+    JPanel createJPanel() {
+
+//        jP = new JPanel(new GridLayout(6, 3, 3, 3));
+        jP = new JPanel();
+
+        GridBagLayout gbLayout = new GridBagLayout();
+        jP.setLayout(gbLayout);
+
 
         JButton button0 = new JButton("PLEASE SELECT A THEME:");
         JButton button1 = new JButton("CHILE");
@@ -35,6 +86,7 @@ class FrameWithThemeChooser extends JFrame {
         JButton button5 = new JButton("SPAIN");
 
         button0.setEnabled(false);
+
         button0.setFont(new Font("Arial", Font.PLAIN, 25));
         button1.setFont(new Font("Arial", Font.PLAIN, 25));
         button2.setFont(new Font("Arial", Font.PLAIN, 25));
@@ -42,58 +94,44 @@ class FrameWithThemeChooser extends JFrame {
         button4.setFont(new Font("Arial", Font.PLAIN, 25));
         button5.setFont(new Font("Arial", Font.PLAIN, 25));
 
-        buttonPanel.add(button0);
-        buttonPanel.add(button1);
-        buttonPanel.add(button2);
-        buttonPanel.add(button3);
-        buttonPanel.add(button4);
-        buttonPanel.add(button5);
+        jP.add(button0);
+        jP.add(button1);
+        jP.add(button2);
+        jP.add(button3);
+        jP.add(button4);
+        jP.add(button5);
 
-        add(buttonPanel);
-        pack();
+        button1.addActionListener(e -> selectSetting("\\puzzle_Valparaiso.jpg"));
+        button2.addActionListener(e -> selectSetting("\\puzzle_Iceland.jpg"));
+        button3.addActionListener(e -> selectSetting("\\puzzle_Poland.jpg"));
+        button4.addActionListener(e -> selectSetting("\\puzzle_Scotland.jpg"));
+        button5.addActionListener(e -> selectSetting("\\puzzle_Spain.jpg"));
 
+        return jP;
     }
-}
 
-class FrameWithPuzzles extends JFrame {
-
-    private static final int DEFAULT_WIDTH = 400;
-    private static final int DEFAULT_HEIGHT = 400;
-    String filename;
-
-
-    public FrameWithPuzzles(String fn) {
-
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = kit.getScreenSize();
-        int sW = screenSize.width;
-        int sH = screenSize.height;
-
-        setSize(sW - 450, sH - 300);
-
-        setLocation(100, 100);
-        setTitle("PUZZLE game by KorzoN");
-        setResizable(true);
-
-        setLayout(new BorderLayout());
-
-
-        ComponentToDraw ctd = new ComponentToDraw();
-
-        add(ctd, BorderLayout.CENTER);
+    void selectSetting(String f) {
+        this.ctd = null;
+        remove(jP);
+        setLayout(null);
 
         repaint();
         revalidate();
 
+        setLayout(new BorderLayout());
+        this.ctd = new ComponentToDraw(f);
+        add(ctd, BorderLayout.CENTER);
+        repaint();
+        revalidate();
     }
+
 }
 
 class ComponentToDraw extends JComponent {
 
-    String f = "D:\\puzzle_Valparaiso.jpg";
+    String file = "";
 
     int cP = -1;
-    int i = -1;
     int currentButton = 0;
 
     double startingX;
@@ -102,12 +140,10 @@ class ComponentToDraw extends JComponent {
     Board board = new Board(0, 0, 500, 500, 5);
 
     String display_info = "";
-//    String display_current_puzzle = "Current one";
-//    String cX = "Current X";
-//    String cY = "Current Y";
 
+    ComponentToDraw(String f) {
 
-    ComponentToDraw() {
+        this.file = f;
 
         board.createPuzzles();
         board.createImages(f);
@@ -125,18 +161,15 @@ class ComponentToDraw extends JComponent {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-//        g2.setStroke(new BasicStroke(6));
+
         g2.drawString(display_info, 240, 70);
-//        g2.drawString(display_current_puzzle, 640, 460);
-//        g2.drawString(cX, 640, 480);
-//        g2.drawString(cY, 640, 500);
+
 
         for (int i = 0; i < board.listOfPuzzles.size(); i++) {
 
             g2.setStroke(new BasicStroke(3));
             g2.draw(board.listOfPuzzles.get(i).getPuzzle());
 
-//            g2.setStroke(new BasicStroke(3));
             g2.setClip(board.listOfPuzzles.get(i).getPuzzle());
 
             g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
@@ -238,9 +271,6 @@ class ComponentToDraw extends JComponent {
                     }
                 }
 
-//                cX = "" + dX;
-//                cY = "" + dY;
-
                 board.listOfPuzzles.get(size - 1).setPosition(e.getX() - startingX - dX, e.getY() - startingY - dY);
 
                 startingX = e.getX();
@@ -250,13 +280,9 @@ class ComponentToDraw extends JComponent {
                 revalidate();
 
             }
-            boolean gameFinished = false;
-
 
             if (board.isSetFinished()) display_info = "" + "Congratulations!!!";
-            else display_info = ""; // + board.isSetFinished();
-//            cX = "" + board.listOfPuzzles.get(24).currentX;
-//            cY = "" + board.listOfPuzzles.get(24).incRotation%4;
+            else display_info = "";
 
             repaint();
             revalidate();
