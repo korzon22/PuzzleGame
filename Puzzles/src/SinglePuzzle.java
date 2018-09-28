@@ -1,17 +1,20 @@
-import javafx.scene.shape.Circle;
-
-import java.awt.*;
 import java.awt.geom.Area;
 import java.awt.geom.*;
 
 public class SinglePuzzle extends Area {
 
-    Area area = new Area();
+    double properX = 0;
+    double properY = 0;
 
-    double cornerX = 0;
-    double cornerY = 0;
+    double currentX = 0;
+    double currentY = 0;
+
     double originalX = 0;
     double originalY = 0;
+
+    int incRotation = 0;
+
+    Area area = new Area();
 
     SinglePuzzle() {
 
@@ -19,20 +22,25 @@ public class SinglePuzzle extends Area {
 
     SinglePuzzle(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
 
-        this.originalX = cornerX;
-        this.originalY = cornerY;
+        this.currentX = currentX;
+        this.currentY = currentY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        this.originalX = currentX;
+        this.originalY = currentY;
+
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         area.add(new Area(rectangle));
 
     }
 
     void setPuzzleRotation(double newX, double newY, int rotation) {
-        this.cornerX = newX;
-        this.cornerY = newY;
+
+        this.currentX = newX;
+        this.currentY = newY;
+        this.incRotation = incRotation+rotation;
 
         AffineTransform oAT = new AffineTransform();
         oAT.quadrantRotate(rotation, newX, newY);
@@ -45,8 +53,8 @@ public class SinglePuzzle extends Area {
 
     void setPosition(double newX, double newY) {
 
-        this.cornerX = newX;
-        this.cornerY = newY;
+        this.currentX = newX;
+        this.currentY = newY;
 
         AffineTransform oAT = new AffineTransform();
         oAT.translate(newX, newY);
@@ -59,12 +67,18 @@ public class SinglePuzzle extends Area {
 
     AffineTransform getOATransform() {
         AffineTransform oAT = new AffineTransform();
-        oAT.translate(originalX-50, originalY-50);
+        oAT.translate(originalX - 50, originalY - 50);
+//        oAT.translate(originalX, originalY);
         return oAT;
     }
 
     boolean ifContains(double x, double y) {
         return (area.contains(x, y));
+    }
+
+    boolean isPositionOriginal(){
+        if (((int)properX == (int)originalX) && ((int)properY==(int)originalY)) return true;
+        return false;
     }
 }
 
@@ -72,19 +86,22 @@ class PuzzleTopLeftCorner extends SinglePuzzle {
 
     PuzzleTopLeftCorner(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
-        Ellipse2D.Double rCut = new Ellipse2D.Double( cornerX+100-30, cornerY+50-20, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 100 - 30, cornerY + 50 - 20, 40, 40);
         area.add(new Area(rectangle));
 
         area.subtract(new Area(rCut));
 
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX+50-20,cornerY+100-30 , 40, 40);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 50 - 20, cornerY + 100 - 30, 40, 40);
         area.subtract(new Area(bCut));
 
     }
@@ -93,13 +110,17 @@ class PuzzleTopLeftCorner extends SinglePuzzle {
 class PuzzleTopRightCorner extends SinglePuzzle {
 
     PuzzleTopRightCorner(double cornerX, double cornerY, double width, double height) {
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         area.add(new Area(rectangle));
 
         Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 50 - 20, 40, 40);
@@ -114,17 +135,18 @@ class PuzzleTopRightCorner extends SinglePuzzle {
 class PuzzleBottomRightCorner extends SinglePuzzle {
 
 
-
     PuzzleBottomRightCorner(double cornerX, double cornerY, double width, double height) {
 
-//        this.imageCenterX =
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         area.add(new Area(rectangle));
 
         Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 50 - 20, 40, 40);
@@ -139,13 +161,17 @@ class PuzzleBottomRightCorner extends SinglePuzzle {
 class PuzzleBottomLeftCorner extends SinglePuzzle {
 
     PuzzleBottomLeftCorner(double cornerX, double cornerY, double width, double height) {
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         area.add(new Area(rectangle));
 
         Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 50 + 20, cornerY + 50 - 20, 40, 40);
@@ -160,16 +186,22 @@ class PuzzleBottomLeftCorner extends SinglePuzzle {
 class PuzzleTopRowEven extends SinglePuzzle {
 
     PuzzleTopRowEven(double cornerX, double cornerY, double width, double height) {
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
-        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY+30, 40, 40);
-        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY+30, 40, 40);
-        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY+100 - 10, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY + 30, 40, 40);
+        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY + 30, 40, 40);
+        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
+
+
 
         area.add(new Area(rectangle));
         area.add(new Area(lFill));
@@ -178,28 +210,25 @@ class PuzzleTopRowEven extends SinglePuzzle {
 
     }
 
-//    @Override
-//    AffineTransform getOATransform() {
-//        AffineTransform oAT = new AffineTransform();
-//        oAT.translate(originalX - 50, originalY);
-//        return oAT;
-//    }
 }
 
 class PuzzleTopRowOdd extends SinglePuzzle {
 
     PuzzleTopRowOdd(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
-        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY+30, 40, 40);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY+30, 40, 40);
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY+100 - 30, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 30, 40, 40);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY + 30, 40, 40);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
 
         area.add(new Area(rectangle));
         area.subtract(new Area(lCut));
@@ -213,14 +242,16 @@ class PuzzleLeftEven extends SinglePuzzle {
 
     PuzzleLeftEven(double cornerX, double cornerY, double width, double height) {
 
+        this.properX = cornerX;
+        this.properY = cornerY;
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
         Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + 100 - 10, cornerY + 50 - 20, 40, 40);
         Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
@@ -232,25 +263,22 @@ class PuzzleLeftEven extends SinglePuzzle {
 
     }
 
-//    @Override
-//    AffineTransform getOATransform() {
-//        AffineTransform oAT = new AffineTransform();
-//        oAT.translate(originalX, originalY - 50);
-//        return oAT;
-//    }
 }
 
 class PuzzleLeftOdd extends SinglePuzzle {
 
     PuzzleLeftOdd(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
         Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 100 - 30, cornerY + 50 - 20, 40, 40);
         Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
@@ -267,14 +295,16 @@ class PuzzleRightEven extends SinglePuzzle {
 
     PuzzleRightEven(double cornerX, double cornerY, double width, double height) {
 
+        this.properX = cornerX;
+        this.properY = cornerY;
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
         Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX - 30, cornerY + 50 - 20, 40, 40);
         Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
@@ -286,26 +316,23 @@ class PuzzleRightEven extends SinglePuzzle {
 
     }
 
-//    @Override
-//    AffineTransform getOATransform() {
-//        AffineTransform oAT = new AffineTransform();
-//        oAT.translate(originalX - 50, originalY - 50);
-//        return oAT;
-//    }
 }
 
 class PuzzleRightOdd extends SinglePuzzle {
 
     PuzzleRightOdd(double cornerX, double cornerY, double width, double height) {
 
+        this.properX = cornerX;
+        this.properY = cornerY;
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
         Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX - 10, cornerY + 50 - 20, 40, 40);
         Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
@@ -322,13 +349,16 @@ class PuzzleBottomRowEven extends SinglePuzzle {
 
     PuzzleBottomRowEven(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY + 30, 40, 40);
         Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY + 30, 40, 40);
         Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
@@ -340,25 +370,22 @@ class PuzzleBottomRowEven extends SinglePuzzle {
 
     }
 
-//    @Override
-//    AffineTransform getOATransform() {
-//        AffineTransform oAT = new AffineTransform();
-//        oAT.translate(originalX - 50, originalY - 50);
-//        return oAT;
-//    }
 }
 
 class PuzzleBottomRowOdd extends SinglePuzzle {
 
     PuzzleBottomRowOdd(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 30, 40, 40);
         Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY + 30, 40, 40);
         Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
@@ -375,13 +402,16 @@ class PuzzleEvenEven extends SinglePuzzle {
 
     PuzzleEvenEven(double cornerX, double cornerY, double width, double height) {
 
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 30, 40, 40);
         Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY + 30, 40, 40);
         Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
@@ -400,13 +430,17 @@ class PuzzleEvenEven extends SinglePuzzle {
 class PuzzleOddEven extends SinglePuzzle {
 
     PuzzleOddEven(double cornerX, double cornerY, double width, double height) {
-        this.cornerX = cornerX;
-        this.cornerY = cornerY;
+
+        this.properX = cornerX;
+        this.properY = cornerY;
+
+        this.currentX = cornerX;
+        this.currentY = cornerY;
 
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.cornerX, this.cornerY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
         Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY + 30, 40, 40);
         Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY + 30, 40, 40);
         Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
@@ -420,10 +454,4 @@ class PuzzleOddEven extends SinglePuzzle {
 
     }
 
-//    @Override
-//    AffineTransform getOATransform() {
-//        AffineTransform oAT = new AffineTransform();
-//        oAT.translate(originalX - 50, originalY - 50);
-//        return oAT;
-//    }
 }
