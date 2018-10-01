@@ -11,6 +11,7 @@ import java.io.IOException;
 public class SingleImage extends Image {
     int originalX;
     int originalY;
+    double puzzleSize;
 
     BufferedImage bfdImage = null;
     BufferedImage subImage = null;
@@ -19,13 +20,14 @@ public class SingleImage extends Image {
 
     }
 
-    SingleImage(int xS, int yS, String f){
-        this.originalX = xS;
-        this.originalY = yS;
+    SingleImage(double xS, double yS, double pS,String f){
+        this.puzzleSize = pS;
+        this.originalX = (int)(xS-(puzzleSize/2));
+        this.originalY = (int)(yS-(puzzleSize/2));
 //        File imageFile = new File(f);
         try {
             bfdImage = ImageIO.read(getClass().getResource(f));
-            subImage = bfdImage.getSubimage(originalX, originalY, 200, 200);
+            subImage = bfdImage.getSubimage(originalX, originalY, (int)(2*puzzleSize), (int)(2*puzzleSize));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +64,7 @@ public class SingleImage extends Image {
     void setImageRotation(int rotation){
         AffineTransform tx = new AffineTransform();
 
-        tx.quadrantRotate(rotation,100,100);
+        tx.quadrantRotate(rotation,puzzleSize,puzzleSize);
 
         AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BICUBIC);
         this.subImage = op.filter(this.subImage, null);
@@ -72,14 +74,15 @@ public class SingleImage extends Image {
 
 class SingleImageExtended extends SingleImage {
 
-    SingleImageExtended(int xS, int yS, String f){
-        originalX = xS;
-        originalY = yS;
+    SingleImageExtended(double xS, double yS, double pS,String f){
+        this.originalX = (int)(xS-(puzzleSize/2));
+        this.originalY = (int)(yS-(puzzleSize/2));
+        this.puzzleSize = pS;
 //        File imageFile = new File(f);
         try {
 //            bfdImage = ImageIO.read(imageFile);
             bfdImage = ImageIO.read(getClass().getResource(f));
-            subImage = bfdImage.getSubimage(originalX, originalY, 200, 200);
+            subImage = bfdImage.getSubimage(originalX, originalY, (int)(2*puzzleSize), (int)(2*puzzleSize));
 
         } catch (IOException e) {
             e.printStackTrace();

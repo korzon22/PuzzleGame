@@ -16,24 +16,29 @@ public class PuzzleGame {
 
 class FrameWithPuzzles extends JFrame {
 
-
-    private static final int DEFAULT_WIDTH = 400;
-    private static final int DEFAULT_HEIGHT = 400;
-
     JPanel jP;
     JMenuBar menuBar;
     ComponentToDraw ctd;
+
+    int sW;
+    int sH;
 
 
     public FrameWithPuzzles() {
 
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        int sW = screenSize.width;
-        int sH = screenSize.height;
+        this.sW = screenSize.width;
+        this.sH = screenSize.height;
 
-        setSize(sW - 450, sH - 300);
-        setLocation(100, 100);
+        System.out.println(sW);
+        System.out.println(sH);
+
+        setSize((int) (sW - 0.1 * sW), (int) (sH - 0.05 * sH));
+        setLocation((int) (sW - 0.95 * sW), (int) (sH - 0.995 * sH));
+
+//        setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+
         setTitle("PUZZLE game by KorzoN");
         setResizable(true);
 
@@ -72,12 +77,10 @@ class FrameWithPuzzles extends JFrame {
 
     JPanel createJPanel() {
 
-//        jP = new JPanel(new GridLayout(6, 3, 3, 3));
         jP = new JPanel();
 
         GridBagLayout gbLayout = new GridBagLayout();
         jP.setLayout(gbLayout);
-
 
         JButton button0 = new JButton("PLEASE SELECT A THEME:");
         JButton button1 = new JButton("CHILE");
@@ -120,7 +123,7 @@ class FrameWithPuzzles extends JFrame {
         revalidate();
 
         setLayout(new BorderLayout());
-        this.ctd = new ComponentToDraw(f);
+        this.ctd = new ComponentToDraw((int)(sH*0.12), f);
         add(ctd, BorderLayout.CENTER);
         repaint();
         revalidate();
@@ -130,7 +133,7 @@ class FrameWithPuzzles extends JFrame {
 
 class ComponentToDraw extends JComponent {
 
-    String file = "";
+    String file;
 
     int cP = -1;
     int currentButton = 0;
@@ -138,18 +141,24 @@ class ComponentToDraw extends JComponent {
     double startingX;
     double startingY;
 
-    Board board = new Board(0, 0, 500, 500, 5);
+    Board board;
 
     String display_info = "";
 
-    ComponentToDraw(String f) {
+    double puzzleSize;
 
+    int noOfPuzzles = 5;
+
+    ComponentToDraw(int pSize, String f) {
+
+        board = new Board(pSize, pSize, pSize * 6, pSize * 6, 5);
         this.file = f;
+        this.puzzleSize = pSize;
 
         board.createPuzzles();
         board.createImages(f);
         board.makeMess();
-        board.createGrid(100, 100, 5);
+        board.createGrid();
         addMouseMotionListener(new MouseMotionHandler());
         addMouseListener(new MouseHandler());
     }
@@ -163,8 +172,7 @@ class ComponentToDraw extends JComponent {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
-        g2.drawString(display_info, 240, 70);
-
+        g2.drawString(display_info, (int)(2.3*puzzleSize), (int)(puzzleSize*0.6));
 
         for (int i = 0; i < board.listOfPuzzles.size(); i++) {
 
@@ -229,7 +237,7 @@ class ComponentToDraw extends JComponent {
                     int x = (int) board.listOfPuzzles.get(24).originalX;
                     int y = (int) board.listOfPuzzles.get(24).originalY;
 
-                    board.listOfPuzzles.get(24).setPuzzleRotation(x + 50, y + 50, 1);
+                    board.listOfPuzzles.get(24).setPuzzleRotation(x + (puzzleSize / 2), y + (puzzleSize / 2), 1);
                     board.listOfImages.get(24).setImageRotation(1);
 //                    display_info = "" + cP;
                     repaint();
@@ -254,19 +262,22 @@ class ComponentToDraw extends JComponent {
                 int dX = 0;
                 int dY = 0;
 
-                if ((currX < 530) && (currY < 530) && (currX > 70) && (currY > 70)) {
-                    for (int i = 1; i < 6; i++) {
+                if ((currX < ((noOfPuzzles * puzzleSize) + (0.3 * puzzleSize)))
+                        && (currY < ((noOfPuzzles * puzzleSize) + (0.3 * puzzleSize)))
+                        && (currX > (0.7 * puzzleSize))
+                        && (currY > (0.7 * puzzleSize))) {
+                    for (int i = 1; i < noOfPuzzles + 1; i++) {
 
-                        if (Math.abs(currX - (i * 100)) < 30) {
-                            dX = currX - i * 100;
+                        if (Math.abs(currX - (i * puzzleSize)) < (0.3 * puzzleSize)) {
+                            dX = currX - (i * (int) puzzleSize);
                             break;
                         }
                     }
 
-                    for (int j = 1; j < 6; j++) {
+                    for (int j = 1; j < noOfPuzzles + 1; j++) {
 
-                        if (Math.abs(currY - (j * 100)) < 30) {
-                            dY = currY - j * 100;
+                        if (Math.abs(currY - (j * puzzleSize)) < (0.3 * puzzleSize)) {
+                            dY = currY - (j * (int) puzzleSize);
                             break;
                         }
                     }
@@ -310,8 +321,6 @@ class ComponentToDraw extends JComponent {
                 repaint();
                 revalidate();
             }
-
-
         }
     }
 

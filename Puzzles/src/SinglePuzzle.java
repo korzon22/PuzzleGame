@@ -12,6 +12,8 @@ public class SinglePuzzle extends Area {
     double originalX = 0;
     double originalY = 0;
 
+    double puzzleSize;
+
     int incRotation = 0;
 
     Area area = new Area();
@@ -20,18 +22,17 @@ public class SinglePuzzle extends Area {
 
     }
 
-    SinglePuzzle(double cornerX, double cornerY, double width, double height) {
+    SinglePuzzle(double cornerX, double cornerY, double size) {
 
         this.properX = cornerX;
         this.properY = cornerY;
 
-        this.currentX = currentX;
-        this.currentY = currentY;
+        this.puzzleSize = size;
 
         this.originalX = currentX;
         this.originalY = currentY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
         area.add(new Area(rectangle));
 
     }
@@ -40,6 +41,7 @@ public class SinglePuzzle extends Area {
 
         this.currentX = newX;
         this.currentY = newY;
+
         this.incRotation = incRotation+rotation;
 
         AffineTransform oAT = new AffineTransform();
@@ -67,7 +69,7 @@ public class SinglePuzzle extends Area {
 
     AffineTransform getOATransform() {
         AffineTransform oAT = new AffineTransform();
-        oAT.translate(originalX - 50, originalY - 50);
+        oAT.translate(originalX - (puzzleSize/2), originalY - (puzzleSize/2));
 //        oAT.translate(originalX, originalY);
         return oAT;
     }
@@ -84,7 +86,7 @@ public class SinglePuzzle extends Area {
 
 class PuzzleTopLeftCorner extends SinglePuzzle {
 
-    PuzzleTopLeftCorner(double cornerX, double cornerY, double width, double height) {
+    PuzzleTopLeftCorner(double cornerX, double cornerY, int size) {
 
         this.properX = cornerX;
         this.properY = cornerY;
@@ -95,13 +97,15 @@ class PuzzleTopLeftCorner extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 100 - 30, cornerY + 50 - 20, 40, 40);
+        this.puzzleSize = size;
+
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + size - 0.3*puzzleSize, cornerY + 0.3*size, 0.4*size, 0.4*size);
         area.add(new Area(rectangle));
 
         area.subtract(new Area(rCut));
 
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 50 - 20, cornerY + 100 - 30, 40, 40);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.7*size, 0.4*size, 0.4*size);
         area.subtract(new Area(bCut));
 
     }
@@ -109,8 +113,8 @@ class PuzzleTopLeftCorner extends SinglePuzzle {
 
 class PuzzleTopRightCorner extends SinglePuzzle {
 
-    PuzzleTopRightCorner(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleTopRightCorner(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -120,13 +124,13 @@ class PuzzleTopRightCorner extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
         area.add(new Area(rectangle));
 
-        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 50 - 20, 40, 40);
+        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
         area.subtract(new Area(lCut));
 
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 50 - 20, cornerY + 100 - 30, 40, 40);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.7*size, 0.4*size, 0.4*size);
         area.subtract(new Area(bCut));
 
     }
@@ -134,9 +138,8 @@ class PuzzleTopRightCorner extends SinglePuzzle {
 
 class PuzzleBottomRightCorner extends SinglePuzzle {
 
-
-    PuzzleBottomRightCorner(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleBottomRightCorner(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -146,13 +149,13 @@ class PuzzleBottomRightCorner extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
         area.add(new Area(rectangle));
 
-        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 50 - 20, 40, 40);
+        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
         area.subtract(new Area(lCut));
 
-        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 50 - 20, cornerY - 10, 40, 40);
+        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.1*size, 0.4*size, 0.4*size);
         area.subtract(new Area(tCut));
 
     }
@@ -160,8 +163,8 @@ class PuzzleBottomRightCorner extends SinglePuzzle {
 
 class PuzzleBottomLeftCorner extends SinglePuzzle {
 
-    PuzzleBottomLeftCorner(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleBottomLeftCorner(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -171,13 +174,13 @@ class PuzzleBottomLeftCorner extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
         area.add(new Area(rectangle));
 
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 50 + 20, cornerY + 50 - 20, 40, 40);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 0.7*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
         area.subtract(new Area(rCut));
 
-        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 50 - 20, cornerY - 10, 40, 40);
+        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.1*size, 0.4*size, 0.4*size);
         area.subtract(new Area(tCut));
 
     }
@@ -185,8 +188,8 @@ class PuzzleBottomLeftCorner extends SinglePuzzle {
 
 class PuzzleTopRowEven extends SinglePuzzle {
 
-    PuzzleTopRowEven(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleTopRowEven(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -196,12 +199,10 @@ class PuzzleTopRowEven extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY + 30, 40, 40);
-        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY + 30, 40, 40);
-        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
-
-
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + size - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.9*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.add(new Area(lFill));
@@ -214,8 +215,8 @@ class PuzzleTopRowEven extends SinglePuzzle {
 
 class PuzzleTopRowOdd extends SinglePuzzle {
 
-    PuzzleTopRowOdd(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleTopRowOdd(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -225,10 +226,10 @@ class PuzzleTopRowOdd extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 30, 40, 40);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY + 30, 40, 40);
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + size - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.7*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.subtract(new Area(lCut));
@@ -240,8 +241,8 @@ class PuzzleTopRowOdd extends SinglePuzzle {
 
 class PuzzleLeftEven extends SinglePuzzle {
 
-    PuzzleLeftEven(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleLeftEven(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -251,10 +252,10 @@ class PuzzleLeftEven extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
-        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + 100 - 10, cornerY + 50 - 20, 40, 40);
-        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + 0.9*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.9*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.add(new Area(tFill));
@@ -267,8 +268,8 @@ class PuzzleLeftEven extends SinglePuzzle {
 
 class PuzzleLeftOdd extends SinglePuzzle {
 
-    PuzzleLeftOdd(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleLeftOdd(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -278,10 +279,10 @@ class PuzzleLeftOdd extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 100 - 30, cornerY + 50 - 20, 40, 40);
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.1*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + 0.7*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.7*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.subtract(new Area(tCut));
@@ -293,8 +294,8 @@ class PuzzleLeftOdd extends SinglePuzzle {
 
 class PuzzleRightEven extends SinglePuzzle {
 
-    PuzzleRightEven(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleRightEven(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -304,10 +305,10 @@ class PuzzleRightEven extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
-        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX - 30, cornerY + 50 - 20, 40, 40);
-        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.9*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.add(new Area(tFill));
@@ -320,8 +321,8 @@ class PuzzleRightEven extends SinglePuzzle {
 
 class PuzzleRightOdd extends SinglePuzzle {
 
-    PuzzleRightOdd(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleRightOdd(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -332,10 +333,10 @@ class PuzzleRightOdd extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX - 10, cornerY + 50 - 20, 40, 40);
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.1*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.7*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.subtract(new Area(tCut));
@@ -347,8 +348,8 @@ class PuzzleRightOdd extends SinglePuzzle {
 
 class PuzzleBottomRowEven extends SinglePuzzle {
 
-    PuzzleBottomRowEven(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleBottomRowEven(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -358,10 +359,10 @@ class PuzzleBottomRowEven extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY + 30, 40, 40);
-        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY + 30, 40, 40);
-        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + size - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.3*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.add(new Area(lFill));
@@ -374,8 +375,8 @@ class PuzzleBottomRowEven extends SinglePuzzle {
 
 class PuzzleBottomRowOdd extends SinglePuzzle {
 
-    PuzzleBottomRowOdd(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleBottomRowOdd(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -385,10 +386,10 @@ class PuzzleBottomRowOdd extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 30, 40, 40);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY + 30, 40, 40);
-        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + size - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.1*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.subtract(new Area(lCut));
@@ -400,8 +401,8 @@ class PuzzleBottomRowOdd extends SinglePuzzle {
 
 class PuzzleEvenEven extends SinglePuzzle {
 
-    PuzzleEvenEven(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleEvenEven(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -411,11 +412,11 @@ class PuzzleEvenEven extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 10, cornerY + 30, 40, 40);
-        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + width - 30, cornerY + 30, 40, 40);
-        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 30, cornerY - 10, 40, 40);
-        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 30, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double lCut = new Ellipse2D.Double(cornerX - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rCut = new Ellipse2D.Double(cornerX + size - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double tCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.1*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bCut = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.7*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.subtract(new Area(lCut));
@@ -429,8 +430,8 @@ class PuzzleEvenEven extends SinglePuzzle {
 
 class PuzzleOddEven extends SinglePuzzle {
 
-    PuzzleOddEven(double cornerX, double cornerY, double width, double height) {
-
+    PuzzleOddEven(double cornerX, double cornerY, double size) {
+        this.puzzleSize = size;
         this.properX = cornerX;
         this.properY = cornerY;
 
@@ -440,11 +441,11 @@ class PuzzleOddEven extends SinglePuzzle {
         this.originalX = cornerX;
         this.originalY = cornerY;
 
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, width, height);
-        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 30, cornerY + 30, 40, 40);
-        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + width - 10, cornerY + 30, 40, 40);
-        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 30, cornerY - 30, 40, 40);
-        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 30, cornerY + 100 - 10, 40, 40);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(this.currentX, this.currentY, size, size);
+        Ellipse2D.Double lFill = new Ellipse2D.Double(cornerX - 0.3*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double rFill = new Ellipse2D.Double(cornerX + size - 0.1*size, cornerY + 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double tFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY - 0.3*size, 0.4*size, 0.4*size);
+        Ellipse2D.Double bFill = new Ellipse2D.Double(cornerX + 0.3*size, cornerY + 0.9*size, 0.4*size, 0.4*size);
 
         area.add(new Area(rectangle));
         area.add(new Area(lFill));
