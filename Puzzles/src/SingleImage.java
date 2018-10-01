@@ -22,10 +22,10 @@ public class SingleImage extends Image {
     SingleImage(int xS, int yS, String f){
         this.originalX = xS;
         this.originalY = yS;
-        File imageFile = new File(f);
+//        File imageFile = new File(f);
         try {
-            this.bfdImage = ImageIO.read(imageFile);
-            this.subImage = bfdImage.getSubimage(originalX, originalY, 100, 100);
+            bfdImage = ImageIO.read(getClass().getResource(f));
+            subImage = bfdImage.getSubimage(originalX, originalY, 200, 200);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,9 +75,10 @@ class SingleImageExtended extends SingleImage {
     SingleImageExtended(int xS, int yS, String f){
         originalX = xS;
         originalY = yS;
-        File imageFile = new File(f);
+//        File imageFile = new File(f);
         try {
-            bfdImage = ImageIO.read(imageFile);
+//            bfdImage = ImageIO.read(imageFile);
+            bfdImage = ImageIO.read(getClass().getResource(f));
             subImage = bfdImage.getSubimage(originalX, originalY, 200, 200);
 
         } catch (IOException e) {

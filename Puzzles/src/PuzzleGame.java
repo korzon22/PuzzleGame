@@ -16,6 +16,7 @@ public class PuzzleGame {
 
 class FrameWithPuzzles extends JFrame {
 
+
     private static final int DEFAULT_WIDTH = 400;
     private static final int DEFAULT_HEIGHT = 400;
 
@@ -101,11 +102,11 @@ class FrameWithPuzzles extends JFrame {
         jP.add(button4);
         jP.add(button5);
 
-        button1.addActionListener(e -> selectSetting("\\puzzle_Valparaiso.jpg"));
-        button2.addActionListener(e -> selectSetting("\\puzzle_Iceland.jpg"));
-        button3.addActionListener(e -> selectSetting("\\puzzle_Poland.jpg"));
-        button4.addActionListener(e -> selectSetting("\\puzzle_Scotland.jpg"));
-        button5.addActionListener(e -> selectSetting("\\puzzle_Spain.jpg"));
+        button1.addActionListener(e -> selectSetting("puzzle_Valparaiso.jpg"));
+        button2.addActionListener(e -> selectSetting("puzzle_Iceland.jpg"));
+        button3.addActionListener(e -> selectSetting("puzzle_Poland.jpg"));
+        button4.addActionListener(e -> selectSetting("puzzle_Scotland.jpg"));
+        button5.addActionListener(e -> selectSetting("puzzle_Spain.jpg"));
 
         return jP;
     }
