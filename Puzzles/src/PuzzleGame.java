@@ -209,7 +209,7 @@ class FrameWithPuzzles extends JFrame {
 
         gbc.fill = GridBagConstraints.VERTICAL;
         gbc.gridx = 0;
-        gbc.gridy = 8;
+        gbc.gridy = 12;
         jP.add(button11,gbc);
         button11.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
 
