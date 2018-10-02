@@ -8,19 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0fc1354a-8ac6-4aea-a673-52cef48aea51" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseMotionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw$MouseMotionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/ComponentToDraw.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Puzzles/SingleImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Puzzles/SingleImage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/puzzle_Iceland.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/puzzle_Iceland.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/puzzle_Poland.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/puzzle_Poland.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/puzzle_Scotland.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/puzzle_Scotland.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/puzzle_Spain.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/puzzle_Spain.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/puzzle_Valparaiso.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/puzzle_Valparaiso.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PuzzleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PuzzleGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SingleImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SingleImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SinglePuzzle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SinglePuzzle.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +30,8 @@
       <file leaf-file-name="PuzzleGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PuzzleGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="398" column="37" lean-forward="true" selection-start-line="398" selection-start-column="37" selection-end-line="398" selection-end-column="37" />
+            <state relative-caret-position="5899">
+              <caret line="349" column="63" selection-start-line="349" selection-start-column="63" selection-end-line="349" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,8 +42,8 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="135">
+              <caret line="104" column="63" lean-forward="true" selection-start-line="104" selection-start-column="63" selection-end-line="104" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,8 +54,8 @@
       <file leaf-file-name="SinglePuzzle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SinglePuzzle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="116" column="31" lean-forward="true" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
+            <state relative-caret-position="-34">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,7 +66,7 @@
       <file leaf-file-name="SingleImage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SingleImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="1377">
               <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
             </state>
           </provider>
@@ -137,9 +126,9 @@
         <option value="$PROJECT_DIR$/src/MouseHandler.java" />
         <option value="$PROJECT_DIR$/src/Time.java" />
         <option value="$PROJECT_DIR$/src/SomeTests.java" />
-        <option value="$PROJECT_DIR$/src/SinglePuzzle.java" />
         <option value="$PROJECT_DIR$/src/SingleImage.java" />
         <option value="$PROJECT_DIR$/src/PuzzleGame.java" />
+        <option value="$PROJECT_DIR$/src/SinglePuzzle.java" />
         <option value="$PROJECT_DIR$/src/Board.java" />
       </list>
     </option>
@@ -158,7 +147,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -187,7 +176,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -403,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538414725385</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Puzzles ver 1.03">
+      <created>1538477328559</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1538477328559</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -416,9 +412,9 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.58313817" side_tool="true" weight="0.2371134" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5839188" side_tool="true" weight="0.22336769" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.41686183" visible="true" weight="0.22336769" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4160812" visible="true" weight="0.22336769" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49960968" weight="0.3036566" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="2" />
@@ -467,7 +463,8 @@
     <MESSAGE value="Checking from Intelij" />
     <MESSAGE value="Puzzles ver 1.01" />
     <MESSAGE value="Puzzles ver 1.02" />
-    <option name="LAST_COMMIT_MESSAGE" value="Puzzles ver 1.02" />
+    <MESSAGE value="Puzzles ver 1.03" />
+    <option name="LAST_COMMIT_MESSAGE" value="Puzzles ver 1.03" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -625,25 +622,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SingleImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="1377">
           <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SinglePuzzle.java">
+    <entry file="file://$PROJECT_DIR$/src/PuzzleGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="116" column="31" lean-forward="true" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
+        <state relative-caret-position="5899">
+          <caret line="349" column="63" selection-start-line="349" selection-start-column="63" selection-end-line="349" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PuzzleGame.java">
+    <entry file="file://$PROJECT_DIR$/src/SinglePuzzle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="398" column="37" lean-forward="true" selection-start-line="398" selection-start-column="37" selection-end-line="398" selection-end-column="37" />
+        <state relative-caret-position="-34">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -652,8 +649,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+        <state relative-caret-position="135">
+          <caret line="104" column="63" lean-forward="true" selection-start-line="104" selection-start-column="63" selection-end-line="104" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

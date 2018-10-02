@@ -70,7 +70,7 @@ public class SinglePuzzle extends Area {
     AffineTransform getOATransform() {
         AffineTransform oAT = new AffineTransform();
         oAT.translate(originalX - (puzzleSize/2), originalY - (puzzleSize/2));
-//        oAT.translate(originalX, originalY);
+
         return oAT;
     }
 
