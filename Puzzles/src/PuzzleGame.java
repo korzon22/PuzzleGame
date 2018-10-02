@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 
 public class PuzzleGame {
     public static void main(String[] args) {
@@ -109,17 +110,17 @@ class FrameWithPuzzles extends JFrame {
         JButton button0 = new JButton("SELECT A THEME:");
         JButton button1 = new JButton("ARGENTINA");
         JButton button2 = new JButton("AUSTRALIA");
-        JButton button3 = new JButton("CHILE");
-        JButton button4 = new JButton("ICELAND");
-        JButton button5 = new JButton("POLAND");
-        JButton button6 = new JButton("SCOTLAND");
-        JButton button7 = new JButton("SPAIN");
-
-
-        JButton button8 = new JButton("AUSTRIA");
-        JButton button9 = new JButton("CANADA");
-        JButton button10 = new JButton("INDONESIA");
+        JButton button3 = new JButton("CANADA");
+        JButton button4 = new JButton("CHILE");
+        JButton button5 = new JButton("ICELAND");
+        JButton button6 = new JButton("IRELAND");
+        JButton button7 = new JButton("POLAND");
+        JButton button8 = new JButton("ROMANIA");
+        JButton button9 = new JButton("SCOTLAND");
+        JButton button10 = new JButton("SPAIN");
         JButton button11 = new JButton("TANZANIA");
+
+
 
         button0.setEnabled(false);
 
@@ -131,6 +132,10 @@ class FrameWithPuzzles extends JFrame {
         button5.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
         button6.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
         button7.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button8.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button9.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button10.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button11.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
 
         gbc.fill = GridBagConstraints.VERTICAL;
         gbc.gridx = 0;
@@ -184,14 +189,41 @@ class FrameWithPuzzles extends JFrame {
         jP.add(button7,gbc);
         button7.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
 
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        jP.add(button8,gbc);
+        button8.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 10;
+        jP.add(button9,gbc);
+        button9.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 11;
+        jP.add(button10,gbc);
+        button10.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        jP.add(button11,gbc);
+        button11.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
 
         button1.addActionListener(e -> selectSetting("puzzle_Argentina.jpg"));
         button2.addActionListener(e -> selectSetting("puzzle_Australia.jpg"));
-        button3.addActionListener(e -> selectSetting("puzzle_Valparaiso.jpg"));
-        button4.addActionListener(e -> selectSetting("puzzle_Iceland.jpg"));
-        button5.addActionListener(e -> selectSetting("puzzle_Poland.jpg"));
-        button6.addActionListener(e -> selectSetting("puzzle_Scotland.jpg"));
-        button7.addActionListener(e -> selectSetting("puzzle_Spain.jpg"));
+        button3.addActionListener(e -> selectSetting("puzzle_Canada.jpg"));
+        button4.addActionListener(e -> selectSetting("puzzle_Chile.jpg"));
+        button5.addActionListener(e -> selectSetting("puzzle_Iceland.jpg"));
+        button6.addActionListener(e -> selectSetting("puzzle_Ireland.jpg"));
+        button7.addActionListener(e -> selectSetting("puzzle_Poland.jpg"));
+        button8.addActionListener(e -> selectSetting("puzzle_Romania.jpg"));
+        button9.addActionListener(e -> selectSetting("puzzle_Scotland.jpg"));
+        button10.addActionListener(e -> selectSetting("puzzle_Spain.jpg"));
+        button11.addActionListener(e -> selectSetting("puzzle_Tanzania.jpg"));
 
         return jP;
     }
@@ -229,6 +261,8 @@ class ComponentToDraw extends JComponent {
 
     double puzzleSize;
 
+    byte stroke = 3;
+
     int noOfPuzzles = 5;
 
     ComponentToDraw(int pSize, String f, int nS) {
@@ -248,6 +282,7 @@ class ComponentToDraw extends JComponent {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+
         Graphics2D g2 = (Graphics2D) g.create();
 
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -258,19 +293,18 @@ class ComponentToDraw extends JComponent {
 
         for (int i = 0; i < board.listOfPuzzles.size(); i++) {
 
-            g2.setStroke(new BasicStroke(3));
+            g2.setClip(null);
+            g2.setStroke(new BasicStroke(0));
+            g2.draw(board.listOfRectangles.get(i));
+            g2.setStroke(new BasicStroke(stroke));
             g2.draw(board.listOfPuzzles.get(i).getPuzzle());
 
             g2.setClip(board.listOfPuzzles.get(i).getPuzzle());
 
             g2.drawImage(board.listOfImages.get(i).getImage(), board.listOfPuzzles.get(i).getOATransform(), this);
 
-            g2.setStroke(new BasicStroke(3));
+            g2.setStroke(new BasicStroke(stroke));
             g2.draw(board.listOfPuzzles.get(i).getPuzzle());
-
-            g2.setClip(null);
-            g2.setStroke(new BasicStroke(0));
-            g2.draw(board.listOfRectangles.get(i));
 
         }
 
@@ -296,7 +330,6 @@ class ComponentToDraw extends JComponent {
                     board.listOfPuzzles.add(board.listOfPuzzles.remove(cP));
                     board.listOfImages.add(board.listOfImages.remove(cP));
 
-//                    display_info = "" + cP;
                 }
             }
 
@@ -374,8 +407,16 @@ class ComponentToDraw extends JComponent {
 
             }
 
-            if (board.isSetFinished()) display_info = "" + "Congratulations!!!";
-            else display_info = "";
+            if (board.isSetFinished()) {
+                display_info = "" + "Congratulations!!!";
+
+                stroke = 1;
+
+            }
+            else {
+                display_info = "";
+                stroke =3;
+            }
 
             repaint();
             revalidate();
