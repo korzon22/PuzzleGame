@@ -22,6 +22,8 @@ class FrameWithPuzzles extends JFrame {
 
     int sW;
     int sH;
+    int newSize;
+    int puzzleSize;
 
 
     public FrameWithPuzzles() {
@@ -33,6 +35,19 @@ class FrameWithPuzzles extends JFrame {
 
         System.out.println(sW);
         System.out.println(sH);
+
+        double one = sH;
+//        double result1 = 1400.0*one/1700.0;
+        double result1 = 1600.0*one/1700.0;
+
+        double two = sH;
+        double result2 = two/8.0;
+
+        newSize = (int)result1;
+        puzzleSize = (int) result2;
+
+        System.out.println("New size: "+result1);
+        System.out.println("Puzzle size: "+result2);
 
         setSize((int) (sW - 0.1 * sW), (int) (sH - 0.05 * sH));
         setLocation((int) (sW - 0.95 * sW), (int) (sH - 0.995 * sH));
@@ -68,6 +83,10 @@ class FrameWithPuzzles extends JFrame {
         menu.add(menuItemNewGame);
         menu.add(menuItemQuit);
 
+        menu.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        menuItemNewGame.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        menuItemQuit.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+
         this.setJMenuBar(menuBar);
 
         repaint();
@@ -80,36 +99,99 @@ class FrameWithPuzzles extends JFrame {
         jP = new JPanel();
 
         GridBagLayout gbLayout = new GridBagLayout();
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
         jP.setLayout(gbLayout);
 
-        JButton button0 = new JButton("PLEASE SELECT A THEME:");
-        JButton button1 = new JButton("CHILE");
-        JButton button2 = new JButton("ICELAND");
-        JButton button3 = new JButton("POLAND");
-        JButton button4 = new JButton("SCOTLAND");
-        JButton button5 = new JButton("SPAIN");
+        gbLayout.setConstraints(this, gbc);
+
+        JButton button0 = new JButton("SELECT A THEME:");
+        JButton button1 = new JButton("ARGENTINA");
+        JButton button2 = new JButton("AUSTRALIA");
+        JButton button3 = new JButton("CHILE");
+        JButton button4 = new JButton("ICELAND");
+        JButton button5 = new JButton("POLAND");
+        JButton button6 = new JButton("SCOTLAND");
+        JButton button7 = new JButton("SPAIN");
+
+
+        JButton button8 = new JButton("AUSTRIA");
+        JButton button9 = new JButton("CANADA");
+        JButton button10 = new JButton("INDONESIA");
+        JButton button11 = new JButton("TANZANIA");
 
         button0.setEnabled(false);
 
-        button0.setFont(new Font("Arial", Font.PLAIN, 25));
-        button1.setFont(new Font("Arial", Font.PLAIN, 25));
-        button2.setFont(new Font("Arial", Font.PLAIN, 25));
-        button3.setFont(new Font("Arial", Font.PLAIN, 25));
-        button4.setFont(new Font("Arial", Font.PLAIN, 25));
-        button5.setFont(new Font("Arial", Font.PLAIN, 25));
+        button0.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button1.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button2.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button3.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button4.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button5.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button6.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
+        button7.setFont(new Font("Arial", Font.PLAIN, puzzleSize/6));
 
-        jP.add(button0);
-        jP.add(button1);
-        jP.add(button2);
-        jP.add(button3);
-        jP.add(button4);
-        jP.add(button5);
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.ipady = 20;
+        gbc.ipadx = 50;
 
-        button1.addActionListener(e -> selectSetting("puzzle_Valparaiso.jpg"));
-        button2.addActionListener(e -> selectSetting("puzzle_Iceland.jpg"));
-        button3.addActionListener(e -> selectSetting("puzzle_Poland.jpg"));
-        button4.addActionListener(e -> selectSetting("puzzle_Scotland.jpg"));
-        button5.addActionListener(e -> selectSetting("puzzle_Spain.jpg"));
+        jP.add(button0,gbc);
+        button0.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        jP.add(button1,gbc);
+        button1.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        jP.add(button2,gbc);
+        button2.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        jP.add(button3,gbc);
+        button3.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        jP.add(button4,gbc);
+        button4.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        jP.add(button5,gbc);
+        button5.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        jP.add(button6,gbc);
+        button6.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        jP.add(button7,gbc);
+        button7.setPreferredSize(new Dimension(puzzleSize*2,puzzleSize/4));
+
+
+        button1.addActionListener(e -> selectSetting("puzzle_Argentina.jpg"));
+        button2.addActionListener(e -> selectSetting("puzzle_Australia.jpg"));
+        button3.addActionListener(e -> selectSetting("puzzle_Valparaiso.jpg"));
+        button4.addActionListener(e -> selectSetting("puzzle_Iceland.jpg"));
+        button5.addActionListener(e -> selectSetting("puzzle_Poland.jpg"));
+        button6.addActionListener(e -> selectSetting("puzzle_Scotland.jpg"));
+        button7.addActionListener(e -> selectSetting("puzzle_Spain.jpg"));
 
         return jP;
     }
@@ -123,7 +205,7 @@ class FrameWithPuzzles extends JFrame {
         revalidate();
 
         setLayout(new BorderLayout());
-        this.ctd = new ComponentToDraw((int)(sH*0.12), f);
+        this.ctd = new ComponentToDraw(puzzleSize, f, newSize);
         add(ctd, BorderLayout.CENTER);
         repaint();
         revalidate();
@@ -149,14 +231,14 @@ class ComponentToDraw extends JComponent {
 
     int noOfPuzzles = 5;
 
-    ComponentToDraw(int pSize, String f) {
+    ComponentToDraw(int pSize, String f, int nS) {
 
         board = new Board(pSize, pSize, pSize * 6, pSize * 6, 5);
         this.file = f;
         this.puzzleSize = pSize;
 
         board.createPuzzles();
-        board.createImages(f);
+        board.createImages(f, nS);
         board.makeMess();
         board.createGrid();
         addMouseMotionListener(new MouseMotionHandler());
@@ -172,7 +254,7 @@ class ComponentToDraw extends JComponent {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 
-        g2.drawString(display_info, (int)(2.3*puzzleSize), (int)(puzzleSize*0.6));
+        g2.drawString(display_info, (int) (2.3 * puzzleSize), (int) (puzzleSize * 0.6));
 
         for (int i = 0; i < board.listOfPuzzles.size(); i++) {
 
@@ -239,7 +321,6 @@ class ComponentToDraw extends JComponent {
 
                     board.listOfPuzzles.get(24).setPuzzleRotation(x + (puzzleSize / 2), y + (puzzleSize / 2), 1);
                     board.listOfImages.get(24).setImageRotation(1);
-//                    display_info = "" + cP;
                     repaint();
                     revalidate();
                 }
